@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: env-variable
+spec:
+  template:
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command: ["printenv"]
+        env:
+        - name: STUDENT_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: school-info
+              key: studentName
+        - name: SCHOOL
+          valueFrom:
+            configMapKeyRef:
+              name: school-info
+              key: school
+        - name: KUBERNETES
+          valueFrom:
+            configMapKeyRef:
+              name: school-info
+              key: kubernetes
+      restartPolicy: Never

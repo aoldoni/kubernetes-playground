@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-sleeper-volume
+  labels:
+    app: busybox
+spec:
+  containers:
+  - name: busybox-sleeper
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    command: ["sleep", "60"]
+    volumeMounts:
+    - mountPath: /nfs/general/
+      name: site-data
+  volumes:
+  - name: site-data
+    persistentVolumeClaim:
+      claimName: persistentclaim-nfs
+  restartPolicy: Always

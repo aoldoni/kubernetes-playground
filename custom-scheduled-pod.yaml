@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: annotation-custom-scheduler
+  labels:
+    name: multischeduler
+  annotations:
+    scheduledBy: customer-scheduler
+spec:
+#  schedulerName: custom-scheduler
+  schedulerName: custom-scheduler-aoldoni1.mylabserver.com-5d49bb967f-trbj5
+  containers:
+  - name: pod-container
+    image: k8s.gcr.io/pause:2.0

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: school-info
+data:
+  studentName: "Your Name"
+  school: "Linux Academy"
+  kubernetes: "is awesome"

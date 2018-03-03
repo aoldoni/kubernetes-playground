@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-sleeper
+  labels:
+    app: busybox
+spec:
+  containers:
+  - name: busybox-sleeper
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    command: ["sleep", "60"]
+  restartPolicy: Always
+  nodeSelector:
+    hasssd: "true"
